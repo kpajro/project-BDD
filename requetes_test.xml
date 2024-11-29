@@ -1,0 +1,13 @@
+!!REQUETES DE TEST!!
+
+- recuperer les utilisateurs qui ont laissé un commentaire -
+
+select u.nom, u.prenom, r.nom as restaurant, a.commentaire from avis a join utilisateur u on a.utilisateur_id = u.id join restaurant r on a.restaurant_id = r.id
+
+- recuperer les restaurants qui ont des salades -
+
+select r.nom from restaurant r join menu m on r.id = m.restaurant_id join plat p on m.plat_id = p.id where p.nom like "salade%"
+
+- recuperer les restaurants ainsi que le nombre d'avis qu'il ont reçus regroupé par restaurant -
+
+select r.nom as restaurant, count(a.id) as nb_avis from restaurant r join avis a on r.id = a.restaurant_id group by r.nom
